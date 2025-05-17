@@ -1,0 +1,18 @@
+# Use official Node.js LTS version
+FROM node:18
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy application code
+COPY . .
+
+# Expose port (match the one in your code)
+EXPOSE 3001
+
+# Run the application
+CMD ["node", "app.js"]
