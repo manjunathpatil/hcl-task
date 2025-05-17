@@ -1,24 +1,50 @@
-/
-├── .github/workflows/deploy.yml
-├── appointment/
-│   ├── Dockerfile
-│   └── app.js
-├── patient/
-│   ├── Dockerfile
-│   └── patient.js
-└── k8s/
-    ├── appointment-deployment.yaml
-    ├── appointment-service.yaml
-    ├── patient-deployment.yaml
-    ├── patient-service.yaml
-    └── ingress.yaml
-resource "aws_dynamodb_table" "terraform_lock" {
-  name           = "terraform-state-lock"
-  billing_mode   = "PAY_PER_REQUEST"
-  hash_key       = "LockID"
+Objective
+Deploy the containerized microservices using AWS Lambda with container images, demonstrating your skills in serverless architecture, containerization, and AWS services.
 
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}
+Technical Requirements
+Infrastructure as Code (Terraform)
+
+Provision a VPC with public and private subnets (if needed)
+Set up Lambda functions configured for container image deployment
+Configure necessary IAM roles and security groups
+Set up an ECR repository for your container images
+Create an API Gateway to trigger your Lambda functions
+
+Containerization
+
+Create a Dockerfile for the microservices, optimized for Lambda
+Build and push the Docker image to ECR
+Lambda Configuration
+
+Configure Lambda functions to use container images
+Set up appropriate memory and timeout settings
+CI/CD (GitHub Actions)
+
+Implement a workflow for Terraform (lint, plan, apply)
+Create a workflow for building and pushing Docker images
+Implement a workflow for updating Lambda functions
+Monitoring and Logging
+
+Set up CloudWatch for Lambda logging and metrics
+(Bonus) Implement X-Ray for distributed tracing
+Deliverables
+GitHub repository containing:
+
+Terraform code
+Dockerfiles optimized for Lambda
+GitHub Actions workflows
+Application code (provided microservices)
+Documentation:
+
+Architecture diagram
+Setup and deployment instructions
+Monitoring and logging overview
+Evaluation Criteria
+Lambda configuration and security
+API Gateway setup and integration
+CI/CD pipeline efficiency and reliability
+IaC quality and modularity
+Containerization best practices for Lambda
+Monitoring and logging effectiveness
+Documentation clarity and completeness
+Back to main page
